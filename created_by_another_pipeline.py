@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from gomatic import *
 
-configurator = GoCdConfigurator(HostRestClient("localhost:8153", ssl=False))
+configurator = GoCdConfigurator(HostRestClient("172.17.0.2:8153", ssl=False))
 pipeline = configurator\
 	.ensure_pipeline_group("createdGroup")\
 	.ensure_replacement_of_pipeline("CreatedByAnotherPipeline")\

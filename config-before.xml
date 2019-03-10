@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<cruise schemaVersion="115" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd">
+	<server agentAutoRegisterKey="6da80832-7374-45a4-9238-2f9015cd62f7" artifactsdir="artifacts" commandRepositoryLocation="default" serverId="bfc3b7b1-d7cf-4def-9383-55cf6c9a38f5" tokenGenerationKey="3f72f4d2-9e52-4a7b-b395-f0d8bb49427d" webhookSecret="835f8593-ee04-438b-a3a5-6cebf0f3d21e">
+		<backup emailOnFailure="true" emailOnSuccess="true"/>
+	</server>
+	<pipelines group="defaultGroup">
+		<pipeline name="FirstPipeline">
+			<materials>
+				<git autoUpdate="false" materialName="gocd-repo" url="https://github.com/renatalourena/gocd-pipeline.git"/>
+			</materials>
+			<stage name="defaultStage">
+				<jobs>
+					<job name="defaultJob">
+						<tasks>
+							<exec command="python">
+								<arg>created_by_another_pipeline.py</arg>
+								<runif status="passed"/>
+							</exec>
+						</tasks>
+					</job>
+				</jobs>
+			</stage>
+		</pipeline>
+	</pipelines>
+	<agents>
+		<agent hostname="d2ca748927fb" ipaddress="172.17.0.3" uuid="e718f8a5-9f6b-4023-9f09-b99747117e9d"/>
+	</agents>
+</cruise>
